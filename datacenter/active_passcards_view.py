@@ -1,4 +1,4 @@
-from datacenter.models import Visit, Passcard
+from datacenter.models import Passcard
 from django.shortcuts import render
 
 

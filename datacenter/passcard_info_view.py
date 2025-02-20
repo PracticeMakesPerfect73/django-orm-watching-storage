@@ -20,13 +20,14 @@ def is_visit_long(visit, minutes=60):
 
 
 def passcard_info_view(request, passcode):
-    passcard = get_object_or_404(Passcard, passcode=passcode)  
+    passcard = get_object_or_404(Passcard, passcode=passcode)
     visits = Visit.objects.filter(passcard=passcard).order_by('-entered_at')
 
     this_passcard_visits = [
         {
             'entered_at': localtime(visit.entered_at),
-            'duration': format_duration((visit.leaved_at or now()) - visit.entered_at),
+            'duration': format_duration((visit.leaved_at or now())
+                                        - visit.entered_at),
             'is_strange': is_visit_long(visit),
         }
         for visit in visits
