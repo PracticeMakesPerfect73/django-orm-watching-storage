@@ -16,7 +16,7 @@ def is_visit_long(visit, minutes=60):
         end_time = visit.leaved_at
     else:
         end_time = now()
-    return (end_time - visit.entered_at) >= datetime.timedelta(minutes=minutes)
+    return (localtime(end_time) - localtime(visit.entered_at)) >= datetime.timedelta(minutes=minutes)
 
 
 def passcard_info_view(request, passcode):

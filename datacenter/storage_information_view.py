@@ -16,8 +16,7 @@ def format_duration(duration):
 
 
 def storage_information_view(request):
-    current_visitors = Visit.objects.filter(leaved_at__isnull=True,
-                                            passcard__is_active=True)
+    current_visitors = Visit.objects.filter(leaved_at__isnull=True)
     non_closed_visits = []
     for visitor in current_visitors:
         duration = get_duration(visitor)
